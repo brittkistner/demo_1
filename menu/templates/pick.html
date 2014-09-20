@@ -1,0 +1,37 @@
+{#Geolocation here and restaurants will populate#}
+
+{#Click on pic of restaurant (link) and take to that restaurants menu, send in menu_id#}
+
+{#pull menu by time of day, if else loop for hours 12 - 11(breakfast), 11-4(lunch), 4-12(dinner).  Choose menu name.  #}
+
+{#Restaurant.menus.get(id=menu_id)#}
+
+{#Geolocation#}
+<p id="demo">Click the button to get your coordinates:</p>
+
+<button onclick="getLocation()">Try It</button>
+</div>
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);#store position
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+function storePosition(position, {{ traveller }}) {
+    {{ traveller.latitude }} = position.coords.latitude;
+    {{ traveller.longitude }} = position.coords.longitude;
+    {{ block }}
+        {{ traveller }}.save()
+    {{ endblock }};
+{;
+</script>

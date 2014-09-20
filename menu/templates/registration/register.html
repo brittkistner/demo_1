@@ -1,0 +1,10 @@
+{% extends "base_template.html" %}
+<p>hiiiii</p>
+{% block content %}
+    <form method="post" action=".">  {# action is where the form submits to (specifies what url the form goes to) in django we almost always submit the form to the view we are looking at  #}
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
