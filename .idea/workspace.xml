@@ -49,13 +49,13 @@
                     <ID>DjangoModelDependency</ID>
                     <OriginalElement>#demo1</OriginalElement>
                     <nodes>
-                      <node x="291.0" y="0.0">menu.models.Tag</node>
-                      <node x="297.0" y="290.0">menu.models.Order</node>
-                      <node x="0.0" y="145.0">menu.models.Restaurant</node>
-                      <node x="629.0" y="312.0">menu.models.ShoppingCart</node>
-                      <node x="33.0" y="312.0">menu.models.Menu</node>
-                      <node x="628.25" y="123.0">menu.models.Customer</node>
-                      <node x="268.0" y="123.0">menu.models.Food</node>
+                      <node x="416.0" y="0.0">menu.models.Tag</node>
+                      <node x="0.0" y="290.0">menu.models.Order</node>
+                      <node x="665.0" y="145.0">menu.models.Restaurant</node>
+                      <node x="322.0" y="301.0">menu.models.ShoppingCart</node>
+                      <node x="576.0" y="312.0">menu.models.Menu</node>
+                      <node x="21.75" y="123.0">menu.models.Customer</node>
+                      <node x="393.0" y="123.0">menu.models.Food</node>
                     </nodes>
                     <notes />
                     <edges>
@@ -87,6 +87,10 @@
                         <point x="0.0" y="0.0" />
                         <point x="0.0" y="0.0" />
                       </edge>
+                      <edge source="menu.models.ShoppingCart" target="menu.models.Restaurant">
+                        <point x="0.0" y="0.0" />
+                        <point x="0.0" y="0.0" />
+                      </edge>
                     </edges>
                     <settings layout="Hierarchic Group" zoom="1.0" x="327.0" y="240.0" />
                     <SelectedNodes />
@@ -108,16 +112,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demo1/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25143954" vertical-offset="979" max-vertical-offset="1560">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo1/urls.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -133,8 +127,8 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/menu/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="930">
-              <caret line="50" column="72" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+              <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -142,63 +136,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DjangoModelDependency/#demo1" pinned="false" current="false" current-in-tab="false">
-        <entry file="uml://DjangoModelDependency/#demo1">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>DjangoModelDependency</ID>
-              <OriginalElement>#demo1</OriginalElement>
-              <nodes>
-                <node x="291.0" y="0.0">menu.models.Tag</node>
-                <node x="297.0" y="290.0">menu.models.Order</node>
-                <node x="0.0" y="145.0">menu.models.Restaurant</node>
-                <node x="629.0" y="312.0">menu.models.ShoppingCart</node>
-                <node x="33.0" y="312.0">menu.models.Menu</node>
-                <node x="628.25" y="123.0">menu.models.Customer</node>
-                <node x="268.0" y="123.0">menu.models.Food</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="menu.models.Order" target="menu.models.Customer">
-                  <point x="78.0" y="-69.5" />
-                  <point x="531.0" y="270.0" />
-                  <point x="684.5" y="270.0" />
-                  <point x="-56.25" y="58.5" />
-                </edge>
-                <edge source="menu.models.Food" target="menu.models.Tag">
-                  <point x="0.0" y="-58.5" />
-                  <point x="0.0" y="36.5" />
-                </edge>
-                <edge source="menu.models.ShoppingCart" target="menu.models.Customer">
-                  <point x="56.0" y="-47.5" />
-                  <point x="56.25" y="58.5" />
-                </edge>
-                <edge source="menu.models.Menu" target="menu.models.Food">
-                  <point x="61.0" y="-47.5" />
-                  <point x="216.0" y="270.0" />
-                  <point x="303.6666666666667" y="270.0" />
-                  <point x="-71.33333333333331" y="58.5" />
-                </edge>
-                <edge source="menu.models.Order" target="menu.models.Food">
-                  <point x="-78.0" y="-69.5" />
-                  <point x="0.0" y="58.5" />
-                </edge>
-                <edge source="menu.models.ShoppingCart" target="menu.models.Food">
-                  <point x="-56.0" y="-47.5" />
-                  <point x="685.0" y="260.0" />
-                  <point x="446.3333333333333" y="260.0" />
-                  <point x="71.33333333333331" y="58.5" />
-                </edge>
-                <edge source="menu.models.Menu" target="menu.models.Restaurant">
-                  <point x="-61.0" y="-47.5" />
-                  <point x="0.0" y="36.5" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="136.0" y="313.0" />
-              <SelectedNodes />
-              <Categories>
-                <Category>Fields</Category>
-              </Categories>
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo1/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="1560">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/menu/static/css/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="93135">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,32 +160,10 @@
         <entry file="file://$PROJECT_DIR$/menu/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/menu/templates/registration/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1410973155000" expanded="true" signature="90:197" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="restaurant_menu.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/menu/templates/restaurant_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="120">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -252,6 +183,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
               <caret line="0" column="118" selection-start-line="0" selection-start-column="118" selection-end-line="0" selection-end-column="118" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base_template.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/menu/templates/base_template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6348247" vertical-offset="0" max-vertical-offset="827">
+              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -280,8 +221,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/local_settings.py" />
-        <option value="$PROJECT_DIR$/menu/templates/base_template.html" />
-        <option value="$PROJECT_DIR$/menu/admin.py" />
         <option value="$PROJECT_DIR$/menu/forms.py" />
         <option value="$PROJECT_DIR$/demo1/settings.py" />
         <option value="$PROJECT_DIR$/menu/templates/home.html" />
@@ -289,15 +228,17 @@
         <option value="$PROJECT_DIR$/menu/templates/restaurant_menu.html" />
         <option value="$PROJECT_DIR$/menu/templates/pick.html" />
         <option value="$PROJECT_DIR$/menu/views.py" />
+        <option value="$PROJECT_DIR$/menu/admin.py" />
         <option value="$PROJECT_DIR$/menu/models.py" />
+        <option value="$PROJECT_DIR$/menu/templates/base_template.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="768" />
-    <option name="y" value="396" />
-    <option name="width" value="1087" />
-    <option name="height" value="664" />
+    <option name="x" value="627" />
+    <option name="y" value="177" />
+    <option name="width" value="1344" />
+    <option name="height" value="993" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -404,6 +345,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="demo1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -429,10 +392,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/menu/static/css" />
+      <recent name="$PROJECT_DIR$/menu/static" />
       <recent name="$PROJECT_DIR$/menu/templates" />
       <recent name="$PROJECT_DIR$/menu/static/js" />
       <recent name="$PROJECT_DIR$/menu/static/fonts" />
-      <recent name="$PROJECT_DIR$/menu/static/css" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.demo1">
@@ -652,7 +616,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="768" y="396" width="1087" height="664" extended-state="0" />
+    <frame x="627" y="177" width="1344" height="993" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -661,11 +625,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17511962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.140553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11320755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.051054385" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.051054385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -711,63 +675,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/menu/static/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="93135">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu/static/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86092716" vertical-offset="0" max-vertical-offset="31740">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu/static/css/stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="489">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu/templates/base_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/menu/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="466">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1410973155000" expanded="true" signature="90:197" placeholder="..." />
+            <marker date="1410973155000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menu/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
-          <caret line="0" column="118" selection-start-line="0" selection-start-column="118" selection-end-line="0" selection-end-column="118" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,52 +717,50 @@
           <ID>DjangoModelDependency</ID>
           <OriginalElement>#demo1</OriginalElement>
           <nodes>
-            <node x="291.0" y="0.0">menu.models.Tag</node>
-            <node x="297.0" y="290.0">menu.models.Order</node>
-            <node x="0.0" y="145.0">menu.models.Restaurant</node>
-            <node x="629.0" y="312.0">menu.models.ShoppingCart</node>
-            <node x="33.0" y="312.0">menu.models.Menu</node>
-            <node x="628.25" y="123.0">menu.models.Customer</node>
-            <node x="268.0" y="123.0">menu.models.Food</node>
+            <node x="416.0" y="0.0">menu.models.Tag</node>
+            <node x="0.0" y="290.0">menu.models.Order</node>
+            <node x="665.0" y="145.0">menu.models.Restaurant</node>
+            <node x="322.0" y="301.0">menu.models.ShoppingCart</node>
+            <node x="576.0" y="312.0">menu.models.Menu</node>
+            <node x="21.75" y="123.0">menu.models.Customer</node>
+            <node x="393.0" y="123.0">menu.models.Food</node>
           </nodes>
           <notes />
           <edges>
             <edge source="menu.models.Order" target="menu.models.Customer">
-              <point x="78.0" y="-69.5" />
-              <point x="531.0" y="270.0" />
-              <point x="684.5" y="270.0" />
-              <point x="-56.25" y="58.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.Food" target="menu.models.Tag">
-              <point x="0.0" y="-58.5" />
-              <point x="0.0" y="36.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.ShoppingCart" target="menu.models.Customer">
-              <point x="56.0" y="-47.5" />
-              <point x="56.25" y="58.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.Menu" target="menu.models.Food">
-              <point x="61.0" y="-47.5" />
-              <point x="216.0" y="270.0" />
-              <point x="303.6666666666667" y="270.0" />
-              <point x="-71.33333333333331" y="58.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.Order" target="menu.models.Food">
-              <point x="-78.0" y="-69.5" />
-              <point x="0.0" y="58.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.ShoppingCart" target="menu.models.Food">
-              <point x="-56.0" y="-47.5" />
-              <point x="685.0" y="260.0" />
-              <point x="446.3333333333333" y="260.0" />
-              <point x="71.33333333333331" y="58.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
             <edge source="menu.models.Menu" target="menu.models.Restaurant">
-              <point x="-61.0" y="-47.5" />
-              <point x="0.0" y="36.5" />
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="menu.models.ShoppingCart" target="menu.models.Restaurant">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="136.0" y="313.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="327.0" y="240.0" />
           <SelectedNodes />
           <Categories>
             <Category>Fields</Category>
@@ -861,16 +773,6 @@
         <state vertical-scroll-proportion="-8.125" vertical-offset="75" max-vertical-offset="630">
           <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo1/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,10 +796,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demo1/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/menu/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="930">
-          <caret line="50" column="72" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+          <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
@@ -906,8 +828,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo1/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25143954" vertical-offset="979" max-vertical-offset="1560">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="1560">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/static/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="93135">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
+          <caret line="0" column="118" selection-start-line="0" selection-start-column="118" selection-end-line="0" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/static/css/normalize.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6465">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu/templates/base_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6348247" vertical-offset="0" max-vertical-offset="827">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
           <folding />
         </state>
       </provider>
