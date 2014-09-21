@@ -2,12 +2,16 @@
 {% load staticfiles %}
 
 {% block content %}
-    <br>
-    <br>
-    <br>
-{# create jumbotron image here#}
-    <a id="modal_trigger" href="#modal" class="btn btn-default btn-lg">Login/Register</a>
-{#hide the row below until login button clicked#}
+<div class="wrapper">
+{#    <img src="" clas="img-responsive" alt="Responsive imgae">#}
+    <div class="hero">
+            <div class="row login">
+                <div class="col-sm-4 col-sm-offset-5">
+                     <a id="modal_trigger" href="#modal" class="btn btn-default btn-lg">Login/Register</a>
+                </div>
+            </div>
+     </div>
+ </div>
     <div id="modal" class="popupContainer" style="display:none;">
         <header class="popupHeader">
             <span class="header_title">Login</span>
@@ -20,18 +24,13 @@
                     {{ form.as_p }}
 
                     <input class="btn btn-default" type="submit" value="Log in">
-                    <a class="btn btn-default" href="{% url 'register' %}" id="register_form" name="register_form">Sign Up</a>
-                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                    <div class="register">
+                      <a class="btn btn-default" href="{% url 'register' %}">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+{#            <a href="{% url 'password_reset' %}">Forgot password?</a>#}
 {#                    Insert password reset form here?#}
-                </form>
-            </div>
-            <div class="user_register">
-                <form method="post" action=".">
-                    {% csrf_token %}
-{#                    {{ form.as_p }}  #}
-                    <input class="btn btn-default" type="submit" value="Register">
-                </form>
-            </div>
         </section>
     </div>
 
@@ -44,31 +43,7 @@
             $(".header_title").text('Register');
             return false;
         });
-        // Calling Register Form
-        $("#register_form").click(function () {
-            $(".user_login").hide();
-            $(".user_register").show();
-            $(".header_title").text('Register');
-            return false;
-        });
     })
 
 </script>
 {% endblock %}
-
-
-
-
-
-
-{#<div class="row">#}
-{#    <div class="col-sm-3 col-sm-offset-4">#}
-{#        <form method="post" action=".">#}
-{#            {% csrf_token %}#}
-{#            {{ form.as_p }}#}
-{##}
-{#            <input class="btn btn-default" type="submit" value="Log in">#}
-{#            <a class="btn btn-default"href="{% url 'register' %}">Register</a></p>#}
-{#        </form>#}
-{#    </div>#}
-{#</div>#}

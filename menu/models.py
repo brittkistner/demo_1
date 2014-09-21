@@ -3,10 +3,10 @@ from django.db import models
 
 class Customer(AbstractUser):
     name = models.CharField(max_length=30)
-    # Do you need an abstract user?  Probably not, could change back to auth user to set permissions
+    # img = models.ImageField(upload_to='customer_images', blank=True, null=True)
 
     def __unicode__(self):
-        return self.name
+        return u"{}".format(self.name)
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=60)

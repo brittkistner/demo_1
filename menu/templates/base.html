@@ -14,42 +14,62 @@
     <script type="text/javascript" src="{% static 'js/jquery.leanModal.min.js' %}"></script>
   </head>
   <body>
-    <!-- Navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-          </ul>
-        </div>
+
+      <div id="wrap">
+          <div id="main" class="container clear-top">
+              <div class="row">
+                  <div class="span12">
+                        <!-- Navbar -->
+                        <div class="navbar navbar-default navbar-fixed-top">
+                          <div class="container">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <div class="collapse navbar-collapse">
+                              <ul class="nav navbar-nav navbar-right">
+{#                                <li class="active"><a href="#">Home</a></li>#}
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'register' %}">Register</a></li>
+                                {% endif %}
+                              </ul>
+                            </div>
+                             <span style="float:right;">
+
+                            </span>
+                          </div>
+                        </div>
+
+                        {% block content %}{% endblock content %}
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-        {% block content %}{% endblock content %}
+{#      {% block content %}{% endblock content %}#}
     <!-- Footer -->
-    <footer>
-      <div class="row">
-        <div class="col-sm-2 pull-right">
-          <p>&copy; 2014 Brittney Kistner.</p>
-        </div>
-      </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript">
-         $("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
-         $(function () {
-            // Calling Login Form
-            $("#login_form").click(function () {
-                $(".social_login").hide();
-                $(".user_login").show();
-                return false;
-            });
-    </script>
+      <footer class="footer">
+          <div class="row">
+            <div class="col-sm-2 pull-right">
+              <p>&copy; 2014 Brittney Kistner.</p>
+            </div>
+          </div>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script type="text/javascript">
+          $("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+             $(function () {
+                // Calling Login Form
+                $("#login_form").click(function () {
+                    $(".social_login").hide();
+                    $(".user_login").show();
+                    return false;
+             });
+      </script>
   </body>
 </html>

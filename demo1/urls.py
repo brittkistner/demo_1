@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     name='password_reset_confirm'),
     #PROFILE#
     url(r'^profile/$', 'menu.views.profile', name='profile'),
+    # url(r'^/edit/$', 'menu.views.edit_profile', name='edit_profile'),
     #Search#
     url(r'^search/$', 'menu.views.search', name='search'),
     url(r'^search/(?P<coordinates>.*)/$', 'menu.views.search_lat_long', name='search_lat_long'),
@@ -29,8 +30,9 @@ urlpatterns = patterns('',
     url(r'^menu/(?P<restaurant_id>\w+)/$', 'menu.views.get_menu', name='get_menu'),
     #Cart#
     #Checkout#
-    url(r'^checkout/(?P<cart_id>\w+)/$', 'menu.views.checkout', name='checkout'),
-
+    # url(r'^checkout/(?P<cart_id>\w+)/$', 'menu.views.checkout', name='checkout'),
+    #Purchase#
+    url(r'^purchase_complete/$', 'menu.views.purchase_complete', name='purchase_complete'),
 
 
     #HOME#

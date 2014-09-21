@@ -1,9 +1,15 @@
+from crispy_forms.layout import Submit
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from menu.models import Customer, ShoppingCart, Food
+from crispy_forms.helper import FormHelper
 
 
 class EmailUserCreationForm(UserCreationForm):
+    helper = FormHelper()
+    helper.form_method="POST"
+    helper.add_input(Submit('Register', 'Register', css_class='btn-default'))
+
     class Meta:
         model = Customer
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
@@ -35,3 +41,5 @@ class FoodCountForm(forms.Form):
     class Meta:
         model = Food
         fields = ('name')
+
+        #watch video on form

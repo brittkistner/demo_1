@@ -1,10 +1,32 @@
-{% extends "base_template.html" %}
-<p>hiiiii</p>
-{% block content %}
-    <form method="post" action=".">  {# action is where the form submits to (specifies what url the form goes to) in django we almost always submit the form to the view we are looking at  #}
-        {% csrf_token %}
-        {{ form.as_p }}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-        <input type="submit" value="Submit">
-    </form>
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+         {% crispy form %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}
+
+
+{#            <form method="post" action=".">  {# action is where the form submits to (specifies what url the form goes to) in django we almost always submit the form to the view we are looking at  #}
+{#                {% csrf_token %}#}
+{#                {{ form.as_p }}#}
+{#                {% for field in form %}#}
+{#                <fieldset class="form-group">#}
+{#                    <label for="id_{{ field.name }}" class="col-sm-2 control-label">{{ field.label }}</label>#}
+{#                    <div class="col-sm-3">#}
+{#                        <input type="text" class="form-control" name="{{ form.name }}" id="id_{{ field.name }}">#}
+{#                    </div>#}
+{#                </fieldset>#}
+{#                {% endfor %}#}
+{#                <input type="submit" value="Submit">#}
+{#            </form>#}

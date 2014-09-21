@@ -37,6 +37,10 @@ def profile(request):
     data = {"customer": customer}
     return render(request, 'profile.html', data)
 
+# @login_required()
+# def edit_profile(request):
+
+
 # SEARCH #
 @login_required()
 def search(request):
@@ -63,7 +67,7 @@ def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
     if not shopping_cart_list:
         return False
     else:
-        customer_shopping_carts = customer.shopping_cart.filter(pk__in=shopping_cart_list)
+        customer_shopping_carts = customer.shopping_carts.filter(pk__in=shopping_cart_list)
         if not customer_shopping_carts:
             return False
         else:
@@ -71,17 +75,22 @@ def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
 
 def get_shopping_cart(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
-    return customer.shopping_cart.filter(pk__in=shopping_cart_list)[0]  #polish up
+    return customer.shopping_carts.filter(pk__in=shopping_cart_list)[0]  #polish up
 
-
+#RESTAURANT MENU #
 @login_required()
 def get_menu(request, restaurant_id):
     restaurant = Restaurant.objects.get(pk=restaurant_id)
     customer = request.user
+    menu = Menu.objects.get(restaurant=restaurant_id)
+    foods = Food.objects.filter(menus=menu.id)
+    data = {"customer": customer, "foods":foods, "menu":menu}
     if check_shopping_cart_by_restaurant_and_customer(restaurant, customer) == True:
         shopping_cart = get_shopping_cart(restaurant, customer)
+        data['shopping_cart'] = shopping_cart
     else:
         shopping_cart = ShoppingCart(customer=customer,restaurant=restaurant).save()
+        data['shopping_cart'] = shopping_cart
 
     #FORM
     # if request.method == 'POST':
@@ -95,43 +104,31 @@ def get_menu(request, restaurant_id):
                 # shopping_cart.food_quantity.add(food_quantity)
 #can add or delete foods
     # else:
-        menu = Menu.objects.get(restaurant=restaurant_id)
-        foods = Food.objects.filter(menus=menu.id)
-        # customer = request.user
-        # restaurant = Restaurant.objects.get(pk=restaurant_id)
-        # if check_shopping_cart_by_restaurant_and_customer(restaurant, customer) == True:
-        #     shopping_cart = get_shopping_cart(restaurant, customer)
-        # else:
-        #     shopping_cart = ShoppingCart(customer=customer,restaurant=restaurant).save()
-        data = {
-            "menu": menu,
-            "customer": customer,
-            "foods": foods,
-            "shopping_cart": shopping_cart,
-            # "form": FoodCountForm(),
-        }
 
         return render(request, 'restaurant_menu.html', data)
 
-@login_required()
-def checkout(request,cart_id):
-    cart = ShoppingCart.objects.get(pk=cart_id)
-    food_quantities = cart.food_quantity.all()
-    restaurant = Restaurant.objects.get(cart__pk=cart_id)
-    customer = request.user
-    order = Order(customers=customer,restaurant=restaurant)
-    order.save()
-    for food_quantity in food_quantities:
-        order.food_quantity.add(food_quantity)
-    cart.delete()
+#Checkout#
 
-    data={
-        'order':order,
-        'restaurant':restaurant,
-        'customer':customer,
-    }
-    return render(request, 'checkout.html', data)
+# @login_required()
+# def checkout(request,cart_id):
+#     cart = ShoppingCart.objects.get(pk=cart_id)
+#     food_quantities = cart.food_quantity.all()
+#     restaurant = Restaurant.objects.get(cart__pk=cart_id)
+#     customer = request.user
+#     order = Order(customers=customer,restaurant=restaurant)
+#     order.save()
+#     for food_quantity in food_quantities:
+#         order.food_quantity.add(food_quantity)
+#     cart.delete()
+#
+#     data={
+#         'order':order,
+#         'restaurant':restaurant,
+#         'customer':customer,
+#     }
+#     return render(request, 'checkout.html', data)
 
+#Purchase Complete#
 
 
 
