@@ -51,17 +51,6 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='FoodAndCount',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('quantity', models.IntegerField(default=0)),
-                ('food', models.ForeignKey(related_name=b'food_quantity', to='menu.Food')),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Menu',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -78,8 +67,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('creation_time', models.DateTimeField(auto_now_add=True)),
                 ('status', models.BooleanField(default=True)),
+                ('food_quantity', models.IntegerField(default=0)),
                 ('customers', models.ManyToManyField(related_name=b'orders', to=settings.AUTH_USER_MODEL)),
-                ('food_quantity', models.ManyToManyField(related_name=b'orders', null=True, to='menu.FoodAndCount', blank=True)),
+                ('foods', models.ManyToManyField(related_name=b'orders', to='menu.Food')),
             ],
             options={
             },
@@ -102,8 +92,9 @@ class Migration(migrations.Migration):
             name='ShoppingCart',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('food_quantity', models.IntegerField(default=0)),
                 ('customer', models.ForeignKey(related_name=b'shopping_carts', to=settings.AUTH_USER_MODEL)),
-                ('food_quantity', models.ManyToManyField(related_name=b'shopping_cart', null=True, to='menu.FoodAndCount', blank=True)),
+                ('foods', models.ManyToManyField(related_name=b'shopping_carts', null=True, to='menu.Food', blank=True)),
                 ('restaurant', models.ForeignKey(related_name=b'shopping_carts', to='menu.Restaurant')),
             ],
             options={
