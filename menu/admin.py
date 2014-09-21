@@ -8,6 +8,7 @@ admin.site.register(Food)
 admin.site.register(Order)
 admin.site.register(Menu)
 admin.site.register(ShoppingCart)
+# admin.site.register(FoodAndCount)
 
 
 

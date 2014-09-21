@@ -31,19 +31,22 @@ class Food(models.Model):
     def __unicode__(self):
         return self.name
 
-class FoodAndCount(models.Model):
-    food = models.ForeignKey(Food, related_name='food_quantity')
-    quantity = models.IntegerField(default=0)
+# class FoodAndCount(models.Model):
+#     food = models.ForeignKey(Food, related_name='food_quantity', blank=True, null=True)
+#     quantity = models.IntegerField(default=0)
+#
+#     def __unicode__(self):
+#         return u"{}".format(self.food)
 
 class Order(models.Model):
     creation_time = models.DateTimeField(auto_now_add=True)
     customers = models.ManyToManyField(Customer, related_name='orders')
     status = models.BooleanField(default=True)
     restaurant = models.ForeignKey(Restaurant, related_name='orders', default=0)
-    food_quantity = models.ManyToManyField(FoodAndCount, related_name='orders', blank=True, null=True)
+    # food_quantity = models.ManyToManyField(FoodAndCount, related_name='orders', blank=True, null=True)
     #Use NullBooleanField()??
-    # food_quantity = models.IntegerField(default=0)
-    # foods = models.ManyToManyField(Food, related_name='orders')
+    food_quantity = models.IntegerField(default=0)
+    foods = models.ManyToManyField(Food, related_name='orders')
 
 
 class Menu(models.Model):
@@ -57,8 +60,9 @@ class Menu(models.Model):
 class ShoppingCart(models.Model):
     customer = models.ForeignKey(Customer, related_name='shopping_carts')
     restaurant = models.ForeignKey(Restaurant, related_name='shopping_carts')
-    # foods = models.ManyToManyField(Food, related_name='shopping_carts', blank=True, null=True)
-    food_quantity = models.ManyToManyField(FoodAndCount, related_name='shopping_cart', blank=True, null=True)
+    foods = models.ManyToManyField(Food, related_name='shopping_carts', blank=True, null=True)
+    # food_quantity = models.ManyToManyField(FoodAndCount, related_name='shopping_cart', blank=True) #null=True
+    food_quantity = models.IntegerField(default=0)
 
 
 
