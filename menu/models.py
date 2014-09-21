@@ -3,15 +3,16 @@ from django.db import models
 
 class Customer(AbstractUser):
     name = models.CharField(max_length=30)
-    latitude = models.FloatField(null=True)
-    longitude = models.FloatField(null=True)
+    # Do you need an abstract user?  Probably not, could change back to auth user to set permissions
 
     def __unicode__(self):
         return self.name
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=60)
-    #FINISH (Yelp)
+    lat = models.FloatField(null=True)
+    longi = models.FloatField(null=True)
+    img = models.ImageField(upload_to='restaurant_images', blank=True, null=True)
 
     def __unicode__(self):
         return self.name
@@ -35,8 +36,10 @@ class Order(models.Model):
     customers = models.ManyToManyField(Customer, related_name='orders')
     status = models.BooleanField(default=True)
     #Use NullBooleanField()??
-    food_quantity = models.IntegerField()
+    food_quantity = models.IntegerField(default=0)
     foods = models.ManyToManyField(Food, related_name='orders')
+    restaurant = models.ForeignKey(Restaurant, related_name='orders', default=0)
+
 
 class Menu(models.Model):
     name = models.CharField(max_length=30)
@@ -47,9 +50,11 @@ class Menu(models.Model):
         return self.name
 
 class ShoppingCart(models.Model):
-    customer = models.ForeignKey(Customer, related_name='shopping_cart')
-    foods = models.ManyToManyField(Food, related_name='shopping_carts')
-    food_quantity = models.IntegerField(default=0)
+    customer = models.ForeignKey(Customer, related_name='shopping_carts')
     restaurant = models.ForeignKey(Restaurant, related_name='shopping_carts')
+    foods = models.ManyToManyField(Food, related_name='shopping_carts', blank=True, null=True)
+    food_quantity = models.IntegerField(default=0)
+
+
 
 #CREATE ANOTHER APP FOR STAFF(could possible be a regular user)

@@ -1,0 +1,10 @@
+{#Iterate over restaurants and style the restaurant.name, restaurant.img, and include link on each image to go to that restaurant's menu page#}
+{#When clicking on a restaurant <a href="{% url "get_menu" restaurant.id %}"></a>#}
+
+
+
+HELLO
+
+{% for restaurant in restaurants %}
+    <li><a href="{%  url 'get_menu' restaurant.id %}">{{ restaurant.name }}</a></li>
+{% endfor %}

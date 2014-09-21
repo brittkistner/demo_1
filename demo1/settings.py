@@ -69,7 +69,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = None
 
 USE_I18N = True
 
@@ -81,19 +81,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-AUTH_USER_MODEL = 'menu.Customer'
-LOGIN_REDIRECT_URL = 'profile'
-LOGIN_URL = 'login'
 STATIC_URL = '/static/'
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
 
+AUTH_USER_MODEL = 'menu.Customer'
+LOGIN_REDIRECT_URL = 'search'
+LOGIN_URL = '/'
+
+#EMAIL Settings#
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'brittkistner@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'brittkistner@gmail.com'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+

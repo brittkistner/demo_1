@@ -1,12 +1,74 @@
-{% extends "base_template.html" %}
+{% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <br>
+    <br>
+    <br>
+{# create jumbotron image here#}
+    <a id="modal_trigger" href="#modal" class="btn btn-default btn-lg">Login/Register</a>
+{#hide the row below until login button clicked#}
+    <div id="modal" class="popupContainer" style="display:none;">
+        <header class="popupHeader">
+            <span class="header_title">Login</span>
+            <span class="modal_close"><i class="fa fa-times"></i></span>
+        </header>
+        <section class="popupBody">
+            <div class="user_login">
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    {{ form.as_p }}
 
-        <input type="submit" value="Log in">
-    </form>
+                    <input class="btn btn-default" type="submit" value="Log in">
+                    <a class="btn btn-default" href="{% url 'register' %}" id="register_form" name="register_form">Sign Up</a>
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+{#                    Insert password reset form here?#}
+                </form>
+            </div>
+            <div class="user_register">
+                <form method="post" action=".">
+                    {% csrf_token %}
+{#                    {{ form.as_p }}  #}
+                    <input class="btn btn-default" type="submit" value="Register">
+                </form>
+            </div>
+        </section>
+    </div>
 
-    <p>Not member? <a href="{% url 'register' %}">Register!</a></p>
+<script type="text/javascript">
+    $("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+    $(function () {
+        $("#register_form").click(function () {
+            $(".user_login").hide();
+            $(".user_register").show();
+            $(".header_title").text('Register');
+            return false;
+        });
+        // Calling Register Form
+        $("#register_form").click(function () {
+            $(".user_login").hide();
+            $(".user_register").show();
+            $(".header_title").text('Register');
+            return false;
+        });
+    })
+
+</script>
 {% endblock %}
+
+
+
+
+
+
+{#<div class="row">#}
+{#    <div class="col-sm-3 col-sm-offset-4">#}
+{#        <form method="post" action=".">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{##}
+{#            <input class="btn btn-default" type="submit" value="Log in">#}
+{#            <a class="btn btn-default"href="{% url 'register' %}">Register</a></p>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
