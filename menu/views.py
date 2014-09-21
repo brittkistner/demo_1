@@ -113,7 +113,7 @@ def get_menu(request, restaurant_id):
 # def checkout(request,cart_id):
 #     cart = ShoppingCart.objects.get(pk=cart_id)
 #     food_quantities = cart.food_quantity.all()
-#     restaurant = Restaurant.objects.get(cart__pk=cart_id)
+#     restaurant = Restaurant.objects.get(shopping_carts__pk=cart_id)
 #     customer = request.user
 #     order = Order(customers=customer,restaurant=restaurant)
 #     order.save()
@@ -129,6 +129,9 @@ def get_menu(request, restaurant_id):
 #     return render(request, 'checkout.html', data)
 
 #Purchase Complete#
-
-
+@login_required()
+def purchase_complete(request):
+    customer = request.user
+    data = {"customer": customer}
+    return render(request, 'confirm_purchase.html', data)
 

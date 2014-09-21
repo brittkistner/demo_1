@@ -42,4 +42,4 @@ class FoodCountForm(forms.Form):
         model = Food
         fields = ('name')
 
-        #watch video on form
+        #watch video on form and use crispy forms

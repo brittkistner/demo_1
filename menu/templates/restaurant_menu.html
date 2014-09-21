@@ -23,9 +23,16 @@
 {#        food.price#}
 {#    {% endfor %}#}
 
+<div class="container cart">
+{#style in a table#}
+    {% for food in shopping_cart.foods.all() %}
+        <p>{{ food.name }}</p>
+        <p>{{ food.quantity}}</p>
+        <p>{{ food.price}}</p>
+    {% endfor %}
 {#Checkout Button#}
    <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
-
+</div>
 {% endblock %}
 
 
