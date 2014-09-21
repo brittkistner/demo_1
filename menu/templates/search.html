@@ -16,30 +16,3 @@ function redirect(position) {
 
 getLocation()
 </script>
-
-
-
-{#norder to pass the user Geolocation from client side to server side as soon as the user allows for his Geolocation to be used, is by#}
-{##}
-{#Assigning user position variable (pos) to a HTML element (location)#}
-{#Then, auto submitting a HTML form that contains a POST method.#}
-{#Both the above codes have to be written within Google Geolocation API, as shown below in the excerpt.#}
-{##}
-{#var infowindow = new google.maps.InfoWindow({#}
-{#    map: map,#}
-{#    position: pos,#}
-{#    content: 'Location found using HTML5.'#}
-{#  });#}
-{#  // the below line has been inserted to assign a JS variable to HTML input field called 'geolocation'#}
-{#document.getElementById('location').value = pos#}
-{#  map.setCenter(pos);#}
-{#// the below line has been inserted to autosubmit the form.  #}
-{#document.getElementById("geolocation").submit(); #}
-{#Below is the HTML form#}
-{##}
-{#<form id = "geolocation" action="/location" method="POST" >#}
-{#            {% csrf_token %}#}
-{#        <input type="text" id = "location" name="location" value="" />#}
-{#        <input type="submit" />#}
-{##}
-{#</form>#}

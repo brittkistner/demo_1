@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import forms
-from menu.models import Customer, ShoppingCart
+from django import forms
+from menu.models import Customer, ShoppingCart, Food
 
 
 class EmailUserCreationForm(UserCreationForm):
@@ -19,11 +19,19 @@ class EmailUserCreationForm(UserCreationForm):
             code='duplicate_username',
         )
 
-class ShoppingCartForm(forms.Form):
-    # food_id = self.fields['fieldname'].widget = HiddenInput()  FINISH
-    food_quantity = forms.IntegerField() #changed something in forms/forms.py
-    # foods
+# class ShoppingCartForm(forms.Form):
+#     # food_id = self.fields['fieldname'].widget = HiddenInput()  FINISH
+#     food_quantity = forms.IntegerField() #changed something in forms/forms.py
+#     # foods
+#
+#     class Meta:
+#         model = ShoppingCart
+#         fields = ('quantity', 'foods')
+
+class FoodCountForm(forms.Form):
+    food = forms.CharField(max_length=50, widget=forms.HiddenInput())
+    quantity = forms.IntegerField(initial=0)
 
     class Meta:
-        model = ShoppingCart
-        fields = ('quantity', 'foods')
+        model = Food
+        fields = ('name')

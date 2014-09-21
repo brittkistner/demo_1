@@ -1,3 +1,31 @@
 {#Box 1: You have the menu.  iterate through foods to populate menu by food.tag and then food.name and food.price#}
 
 {#Box 2: Shopping Cart Form#}
+
+
+{% extends "base.html" %}
+{% block content %}
+
+{{ foods }}
+{#    {% for food in foods %}#}
+{#        <form method="POST" action=".">{# action is where the form submits to (specifies what url the form goes to) in django we almost always submit the form to the view we are looking at  #}
+{#         {% csrf_token %}#}
+{#          <input type="hidden" name="status_check" />#}
+{#          <input type='hidden' name="food" value="{{ food.name }}" />#}
+{#         {{ form.food }}#}
+{#        </form>#}
+{#        <form method="POST" action=".">#}
+{#         {% csrf_token %}#}
+{#          <input type="hidden" name="status_check" />#}
+{#          <input type='hidden' name="food" value="{{ food.name }}" />#}
+{#         {{ form.food }}#}
+{#        </form>#}
+{#        food.price#}
+    {% endfor %}
+
+{#Checkout Button#}
+   <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
+
+{% endblock %}
+
+

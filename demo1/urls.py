@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^menu/(?P<restaurant_id>\w+)/$', 'menu.views.get_menu', name='get_menu'),
     #Cart#
     #Checkout#
-    # url(r'^checkout/(?P<restaurant_id>\w+)/$', 'menu.views.checkout', name='checkout'),
+    url(r'^checkout/(?P<cart_id>\w+)/$', 'menu.views.checkout', name='checkout'),
 
 
 
