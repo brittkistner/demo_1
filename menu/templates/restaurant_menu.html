@@ -1,11 +1,9 @@
 {#Box 1: You have the menu.  iterate through foods to populate menu by food.tag and then food.name and food.price#}
 
-{#Box 2: Shopping Cart Form#}
-
 
 {% extends "base.html" %}
 {% block content %}
-
+{# FoodQuantityForm/foods hash #}
     {% for food, form in foods.items %}
         {{ food.name }}
         <form method="POST" action=".">
@@ -15,15 +13,26 @@
         </form>
     {% endfor %}
 
+{# Shopping Cart Form #}
 <div class="container cart">
 Shopping Cart
     {% for food_quantity in shopping_cart.food_quantities.all %}
         <p>{{ food_quantity.food.name }}</p>
-        <p>{{ food_quantity.quantity}}</p>
-        <p>{{ food_quantity.food.price}}</p>
+        <p>Quantity:{{ food_quantity.quantity}}</p>
+        <p>Price:{{ food_quantity.food.price}}</p>
     {% endfor %}
+Subtotal:
+{#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
+{#        {{ quantity = food_quantity.quantity  }}#}
+{#        {{  price = food_quantity.price  }}#}
+{#        {% sub = quantity * price%}#}
+{#    {% endfor %}#}
 {#Checkout Button#}
-{#   <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
+{% if shopping_cart%}
+{#    Checkout: <a class="btn btn-default" href="#">Checkout</a>#}
+{% else %}
+    Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
+{% endif %}
 </div>
 {% endblock %}
 

@@ -34,7 +34,7 @@ class Food(models.Model):
 
 class Order(models.Model):
     creation_time = models.DateTimeField(auto_now_add=True)
-    customers = models.ManyToManyField(Customer, related_name='orders')
+    customer = models.ForeignKey(Customer, related_name='ordersorder',default=0)
     status = models.BooleanField(default=True)
     restaurant = models.ForeignKey(Restaurant, related_name='orders', default=0)
     #Use NullBooleanField()??

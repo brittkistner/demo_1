@@ -175,7 +175,7 @@ Login Page Styling
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     overflow:auto;
-    color: white;
+    /*color: white;*/
     height: 50%;
 }
 

@@ -5,7 +5,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from demo1 import settings
 from menu.forms import EmailUserCreationForm, FoodQuantityForm
-from menu.models import Menu, Food, ShoppingCart, Restaurant, Order, ShoppingCartFoodQuantity
+from menu.models import Menu, Food, ShoppingCart, Restaurant, Order, ShoppingCartFoodQuantity, OrderFoodQuantity
 
 
 def register(request):
@@ -100,37 +100,45 @@ def get_menu(request, restaurant_id):
         quantity = int(form['quantity'].value())
         food_id = int(form['food'].value())
 
-        food_quantity = ShoppingCartFoodQuantity.objects.filter(shopping_cart=shopping_cart.id, food=food_id)[0]
+        food_quantity = ShoppingCartFoodQuantity.objects.filter(shopping_cart=shopping_cart.id, food=food_id)
+
         if not food_quantity:
             food_quantity = ShoppingCartFoodQuantity(food=Food.objects.get(pk=food_id), shopping_cart=shopping_cart, quantity=quantity)
             food_quantity.save()
         else:
+            food_quantity = food_quantity[0]
             food_quantity.quantity += quantity
             food_quantity.save()
 
     return render(request, 'restaurant_menu.html', data)
 
-#Checkout#
+# Subtotal idea: shopping_cart.food_quantites.all().aggregate(total=Sum('food.price',field="food.price*quantity"))['total']
 
-# @login_required()
-# def checkout(request,cart_id):
-#     cart = ShoppingCart.objects.get(pk=cart_id)
-#     food_quantities = cart.food_quantity.all()
-#     restaurant = Restaurant.objects.get(shopping_carts__pk=cart_id)
-#     customer = request.user
-# copy scfq to ofq
-#     order = Order(customers=customer,restaurant=restaurant)
-#     order.save()
-#     for food_quantity in food_quantities:
-#         order.food_quantity.add(food_quantity)
-#     cart.delete()
-#
-#     data={
-#         'order':order,
-#         'restaurant':restaurant,
-#         'customer':customer,
-#     }
-#     return render(request, 'checkout.html', data)
+#Checkout#
+@login_required()
+def checkout(request,cart_id):
+    cart = ShoppingCart.objects.get(pk=cart_id)
+    food_quantities = cart.food_quantities.all()
+    restaurant = Restaurant.objects.get(shopping_carts__pk=cart_id)
+    customer = request.user
+    order = Order(customer=customer,restaurant=restaurant)
+    order.save()
+    # copy scfq to ofq
+    for food_quantity in food_quantities:
+        # food_id = food_quantity.food.id
+        food = food_quantity.food
+        quantity = food_quantity.quantity
+        order_food_quantity = OrderFoodQuantity(food=food, quantity=quantity, order=order)
+        order_food_quantity.save()
+        food_quantity.delete()
+    cart.delete()
+
+    data={
+        'order':order,
+        'restaurant':restaurant,
+        'customer':customer,
+    }
+    return render(request, 'checkout.html', data)
 
 #Purchase Complete#
 @login_required()
