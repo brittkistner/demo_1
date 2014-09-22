@@ -42,43 +42,42 @@
 
 
 {# Shopping Cart Form #}
-        <div class="col-sm-6">
-            <table class="table table-striped">
-                <tr>
-                    <th>Summary</th>
-                </tr>
-                <tr>
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                </tr>
-                {% for food_quantity in shopping_cart.food_quantities.all %}
-                <tr>
-                    <td>{{ food_quantity.food.name }}</td>
-                    <td>{{ food_quantity.quantity}}</td>
-                    <td>{{ food_quantity.food.price}}</td>
-                </tr>
-                {% endfor %}
-    {#            <tr>#}
-    {#                <td>#}
-                        {#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
-                        {#        {{ quantity = food_quantity.quantity  }}#}
-                        {#        {{  price = food_quantity.price  }}#}
-                        {#        {% sub = quantity * price%}#}
-                        {#    {% endfor %}#}
-    {#                </td>#}
-    {#            </tr>#}
-    {#            <tr>#}
-                    <th>
-{#                    Checkout Button#}
-                    {% if shopping_cart%}
-                        Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
-                    {% else %}
+        <div class="col-sm-6 table">
+            <div class="row">
+                Summary
+            </div>
+            <div class="row">
+                <table class="table table-condensed table-responsive">
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for food_quantity in shopping_cart.food_quantities.all %}
+                    <tr>
+                        <td>{{ food_quantity.food.name }}</td>
+                        <td>{{ food_quantity.quantity}}</td>
+                        <td>{{ food_quantity.food.price}}</td>
+                    </tr>
+                    {% endfor %}
+        {#            <tr>#}
+        {#                <td>#}
+                            {#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
+                            {#        {{ quantity = food_quantity.quantity  }}#}
+                            {#        {{  price = food_quantity.price  }}#}
+                            {#        {% sub = quantity * price%}#}
+                            {#    {% endfor %}#}
+        {#                </td>#}
+        {#            </tr>#}
+        {#            <tr>#}
+                  </table>
+            {#Checkout Button#}
+{#                {% if shopping_cart%}#}
+{#                    Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
+{#                {% else %}#}
 {#                        Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
-                    {% endif %}
-                    </th>
-    {#            </tr>#}
-            </table>
+{#                {% endif %}#}
+            </div>
         </div>
     </div>
 </div>
