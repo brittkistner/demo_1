@@ -34,12 +34,9 @@ class EmailUserCreationForm(UserCreationForm):
 #         model = ShoppingCart
 #         fields = ('quantity', 'foods')
 
-class FoodCountForm(forms.Form):
-    food = forms.CharField(max_length=50, widget=forms.HiddenInput())
+class FoodQuantityForm(forms.Form):
+    food = forms.IntegerField(widget=forms.HiddenInput())
     quantity = forms.IntegerField(initial=0)
 
-    class Meta:
-        model = Food
-        fields = ('name')
 
         #watch video on form and use crispy forms

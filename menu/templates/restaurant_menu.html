@@ -6,32 +6,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-{{ foods }}
-{#    {% for food in foods %}#}
-{#        <form method="POST" action=".">{# action is where the form submits to (specifies what url the form goes to) in django we almost always submit the form to the view we are looking at  #}
-{#         {% csrf_token %}#}
-{#          <input type="hidden" name="status_check" />#}
-{#          <input type='hidden' name="food" value="{{ food.name }}" />#}
-{#         {{ form.food }}#}
-{#        </form>#}
-{#        <form method="POST" action=".">#}
-{#         {% csrf_token %}#}
-{#          <input type="hidden" name="status_check" />#}
-{#          <input type='hidden' name="food" value="{{ food.name }}" />#}
-{#         {{ form.food }}#}
-{#        </form>#}
-{#        food.price#}
-{#    {% endfor %}#}
+    {% for food, form in foods.items %}
+        {{ food.name }}
+        <form method="POST" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"/>
+        </form>
+    {% endfor %}
 
 <div class="container cart">
-{#style in a table#}
-    {% for food in shopping_cart.foods.all() %}
-        <p>{{ food.name }}</p>
-        <p>{{ food.quantity}}</p>
-        <p>{{ food.price}}</p>
+Shopping Cart
+    {% for food_quantity in shopping_cart.food_quantities.all %}
+        <p>{{ food_quantity.food.name }}</p>
+        <p>{{ food_quantity.quantity}}</p>
+        <p>{{ food_quantity.food.price}}</p>
     {% endfor %}
 {#Checkout Button#}
-   <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
+{#   <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
 </div>
 {% endblock %}
 

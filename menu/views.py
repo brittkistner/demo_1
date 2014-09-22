@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from demo1 import settings
-from menu.forms import EmailUserCreationForm, FoodCountForm
-from menu.models import Menu, Food, ShoppingCart, Restaurant, Order
+from menu.forms import EmailUserCreationForm, FoodQuantityForm
+from menu.models import Menu, Food, ShoppingCart, Restaurant, Order, ShoppingCartFoodQuantity
 
 
 def register(request):
@@ -83,8 +83,11 @@ def get_menu(request, restaurant_id):
     restaurant = Restaurant.objects.get(pk=restaurant_id)
     customer = request.user
     menu = Menu.objects.get(restaurant=restaurant_id)
-    foods = Food.objects.filter(menus=menu.id)
-    data = {"customer": customer, "foods":foods, "menu":menu}
+    foods = {}
+    for food in menu.foods.all():
+        form = FoodQuantityForm({'food': food.id, 'quantity': 0})
+        foods[food] = form
+    data = {"customer": customer, "foods": foods}
     if check_shopping_cart_by_restaurant_and_customer(restaurant, customer) == True:
         shopping_cart = get_shopping_cart(restaurant, customer)
         data['shopping_cart'] = shopping_cart
@@ -92,20 +95,20 @@ def get_menu(request, restaurant_id):
         shopping_cart = ShoppingCart(customer=customer,restaurant=restaurant).save()
         data['shopping_cart'] = shopping_cart
 
-    #FORM
-    # if request.method == 'POST':
-    #     form=FoodCountForm(request.POST)
-    #     if form.is_valid():
-    #         quantity = form.cleaned_data['quantity']
-    #         food = form.cleaned_data['food']
-    #create food_quantity (how to identity food id???)
-                # food_quantity = FoodAndCount(food=food, quantity=quantity)
-                # shopping_cart = Current instance of shopping_cart
-                # shopping_cart.food_quantity.add(food_quantity)
-#can add or delete foods
-    # else:
+    if request.method == 'POST':
+        form=FoodQuantityForm(request.POST)
+        quantity = int(form['quantity'].value())
+        food_id = int(form['food'].value())
 
-        return render(request, 'restaurant_menu.html', data)
+        food_quantity = ShoppingCartFoodQuantity.objects.filter(shopping_cart=shopping_cart.id, food=food_id)[0]
+        if not food_quantity:
+            food_quantity = ShoppingCartFoodQuantity(food=Food.objects.get(pk=food_id), shopping_cart=shopping_cart, quantity=quantity)
+            food_quantity.save()
+        else:
+            food_quantity.quantity += quantity
+            food_quantity.save()
+
+    return render(request, 'restaurant_menu.html', data)
 
 #Checkout#
 
@@ -115,6 +118,7 @@ def get_menu(request, restaurant_id):
 #     food_quantities = cart.food_quantity.all()
 #     restaurant = Restaurant.objects.get(shopping_carts__pk=cart_id)
 #     customer = request.user
+# copy scfq to ofq
 #     order = Order(customers=customer,restaurant=restaurant)
 #     order.save()
 #     for food_quantity in food_quantities:

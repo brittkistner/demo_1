@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+}
+
+html,body,.container
+{
+    height:100%;
+    background-color: black;
+}
+
+.container
+{
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 50px 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  	overflow:auto;
+    min-height:100%;
+}
+
+.row
+{
+    height: 100%;
+    display: table-row;
+}
+.big
+{
+    display: table-cell;
+    background: #313131;
+  	float: none;
+    color:white;
+}
+.smalls
+{
+    display: table-cell;
+    /*background: yellow;*/
+  	float: none;
+    background-image: url('../img/turnips.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    height: 800px;
+    font-color: black;
+}
+}
+
+.footer, .push
+{
+height: 155px;
+position: relative;
+margin-top: -105px;
+height: 100px;
+clear:both;
+padding-top:20px;
+background-color: #262626;
+}
+***************
+Login popup box
+***************
+
+ Overlay when Modal is open
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+ Modal box or Popup box
+.popupContainer{
+    position:absolute;
+    width:330px;
+    height: auto;
+    left:45%;
+    top:50px;
+    background: #FFF;
+}
+
+#modal_trigger  {
+    margin: 100px auto;
+     width: 100px;
+     display: block;
+}
+
+.btn  {
+    padding: 10px 20px;
+     background:  #F4F4F2;
+}
+
+ Popup Styles
+.popupHeader  {
+    font-size: 16px;
+     text-transform:  uppercase;
+}
+
+.popupHeader  {
+    background: #F4F4F2;
+     position: relative;
+     padding: 10px 20px;
+     border-bottom: 1px solid #DDD;
+     font-weight: bold;
+}
+
+.popupHeader .modal_close  {
+    position:  absolute;
+     right:  0;
+     top: 0;
+     padding: 10px 15px;
+     background: #E4E4E2;
+     cursor:  pointer;
+     color: #aaa;
+     font-size: 16px;
+}
+
+.popupBody  {
+    padding: 20px;
+
+}
+
+
+******************
+Login Page Styling
+******************
+
+.words{
+    display: table-cell;
+    /*background: purple;*/
+  	float: none;
+    height:100%;
+}
+
+.words p{
+    border: 2px solid green;
+}
+.button{
+    display: table-cell;
+    /*background: lightblue;*/
+  	float: none;
+    width: 100%;
+    display:table;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow:auto;
+    color: black;
+    height: 50%;
+}
+.login{
+    padding: 50% 10% 0 0;
+}
+
+
+.main{
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 50px 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  	overflow:auto;
+    min-height:100%;
+}
+
+#button{
+    width: 100%;
+    /*background-color: black;*/
+    display:table;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow:auto;
+    color: white;
+    height: 50%;
+}
+
+
+.footer p{
+    float:right;
+    padding-right: 10%;
+    color: white;
+}
