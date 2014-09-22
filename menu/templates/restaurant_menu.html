@@ -8,19 +8,35 @@
     <div class="row">
         <div class="col-sm-6 test">
             <div class="row">
-            {% for food, form in foods.items %}
-                <div class="col-sm-7 test2">
-                    {{ food.name }}
-                </div>
-                <div class="col-sm-5 test3">
-                    <form method="POST" action=".">
-                        {% csrf_token %}
+                {% for food_type, food_ls in types.items %}
+                    <p>Type: {{ food_type }}</p>
+                    {% for food, form in foods.items %}
+                        {% if food.tag == food_type %}
+                            <div class="col-sm-7 test2">
+                                {{ food.name }}
+                            </div>
+                            <div class="col-sm-5 test3">
+                                <form method="POST" action=".">
+                                    {% csrf_token %}
+                                    {% crispy form %}
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+{#            {% for food, form in foods.items %}#}
+{#                <div class="col-sm-7 test2">#}
+{#                    {{ food.name }}#}
+{#                </div>#}
+{#                <div class="col-sm-5 test3">#}
+{#                    <form method="POST" action=".">#}
+{#                        {% csrf_token %}#}
 {#                    {{ form.as_p }}#}
-                        {% crispy form %}
+{#                        {% crispy form %}#}
 {#                    <input type="submit"/>#}
-                    </form>
-                </div>
-            {% endfor %}
+{#                    </form>#}
+{#                </div>#}
+{#            {% endfor %}#}
             </div>
         </div>
 
