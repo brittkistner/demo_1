@@ -1,4 +1,5 @@
-from crispy_forms.layout import Submit
+from crispy_forms.bootstrap import FormActions, StrictButton, FieldWithButtons
+from crispy_forms.layout import Submit, Layout, Fieldset, ButtonHolder, Field
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from menu.models import Customer, ShoppingCart, Food
@@ -25,18 +26,19 @@ class EmailUserCreationForm(UserCreationForm):
             code='duplicate_username',
         )
 
-# class ShoppingCartForm(forms.Form):
-#     # food_id = self.fields['fieldname'].widget = HiddenInput()  FINISH
-#     food_quantity = forms.IntegerField() #changed something in forms/forms.py
-#     # foods
-#
-#     class Meta:
-#         model = ShoppingCart
-#         fields = ('quantity', 'foods')
-
 class FoodQuantityForm(forms.Form):
     food = forms.IntegerField(widget=forms.HiddenInput())
     quantity = forms.IntegerField(initial=0)
 
+    helper = FormHelper()
+    helper.form_method="POST"
+    helper.add_input(Submit('add', 'Add', css_class='button white'))
+    helper.form_class = 'form-horizontal'
+    helper.field_class = 'col-sm-6'
+    helper.form_show_labels = False
 
-        #watch video on form and use crispy forms
+    helper.layout = Layout(
+        # Field('quantity'),
+        # FormActions(Submit('add', 'add', css_class='btn-default'))
+        # FieldWithButtons('quantity', StrictButton("Test"))
+    )

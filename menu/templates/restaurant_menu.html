@@ -1,38 +1,70 @@
 {#Box 1: You have the menu.  iterate through foods to populate menu by food.tag and then food.name and food.price#}
-
-
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 {# FoodQuantityForm/foods hash #}
-    {% for food, form in foods.items %}
-        {{ food.name }}
-        <form method="POST" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit"/>
-        </form>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 test">
+            <div class="row">
+            {% for food, form in foods.items %}
+                <div class="col-sm-7 test2">
+                    {{ food.name }}
+                </div>
+                <div class="col-sm-5 test3">
+                    <form method="POST" action=".">
+                        {% csrf_token %}
+{#                    {{ form.as_p }}#}
+                        {% crispy form %}
+{#                    <input type="submit"/>#}
+                    </form>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
 
 {# Shopping Cart Form #}
-<div class="container cart">
-Shopping Cart
-    {% for food_quantity in shopping_cart.food_quantities.all %}
-        <p>{{ food_quantity.food.name }}</p>
-        <p>Quantity:{{ food_quantity.quantity}}</p>
-        <p>Price:{{ food_quantity.food.price}}</p>
-    {% endfor %}
-Subtotal:
-{#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
-{#        {{ quantity = food_quantity.quantity  }}#}
-{#        {{  price = food_quantity.price  }}#}
-{#        {% sub = quantity * price%}#}
-{#    {% endfor %}#}
-{#Checkout Button#}
-{% if shopping_cart%}
-{#    Checkout: <a class="btn btn-default" href="#">Checkout</a>#}
-{% else %}
-    Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
-{% endif %}
+        <div class="col-sm-6">
+            <table class="table table-striped">
+                <tr>
+                    <th>Summary</th>
+                </tr>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+                {% for food_quantity in shopping_cart.food_quantities.all %}
+                <tr>
+                    <td>{{ food_quantity.food.name }}</td>
+                    <td>{{ food_quantity.quantity}}</td>
+                    <td>{{ food_quantity.food.price}}</td>
+                </tr>
+                {% endfor %}
+    {#            <tr>#}
+    {#                <td>#}
+                        {#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
+                        {#        {{ quantity = food_quantity.quantity  }}#}
+                        {#        {{  price = food_quantity.price  }}#}
+                        {#        {% sub = quantity * price%}#}
+                        {#    {% endfor %}#}
+    {#                </td>#}
+    {#            </tr>#}
+    {#            <tr>#}
+    {#                <th>#}
+                    {#Checkout Button#}
+    {#                {% if shopping_cart%}#}
+                    {#    Checkout: <a class="btn btn-default" href="#">Checkout</a>#}
+    {#                {% else %}#}
+    {#                    Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
+    {#                {% endif %}#}
+    {#                </th>#}
+    {#            </tr>#}
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

@@ -9,7 +9,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-         {% crispy form %}
+            {% csrf_token %} {#Just added#}
+            {% crispy form %}
         </div>
     </div>
 </div>
