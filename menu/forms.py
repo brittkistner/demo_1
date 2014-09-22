@@ -9,6 +9,7 @@ from crispy_forms.helper import FormHelper
 class EmailUserCreationForm(UserCreationForm):
     helper = FormHelper()
     helper.form_method="POST"
+    helper.form_class = 'form-horizontal'
     helper.add_input(Submit('Register', 'Register', css_class='btn-default'))
 
     class Meta:
@@ -37,8 +38,8 @@ class FoodQuantityForm(forms.Form):
     helper.field_class = 'col-sm-6'
     helper.form_show_labels = False
 
-    helper.layout = Layout(
-        # Field('quantity'),
-        # FormActions(Submit('add', 'add', css_class='btn-default'))
-        # FieldWithButtons('quantity', StrictButton("Test"))
-    )
+    # helper.layout = Layout(
+    #     # Field('quantity'),
+    #     # FormActions(Submit('add', 'add', css_class='btn-default'))
+    #     # FieldWithButtons('quantity', StrictButton("Test"))
+    # )

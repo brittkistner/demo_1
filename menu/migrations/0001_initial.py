@@ -67,9 +67,19 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('creation_time', models.DateTimeField(auto_now_add=True)),
                 ('status', models.BooleanField(default=True)),
-                ('food_quantity', models.IntegerField(default=0)),
-                ('customers', models.ManyToManyField(related_name=b'orders', to=settings.AUTH_USER_MODEL)),
-                ('foods', models.ManyToManyField(related_name=b'orders', to='menu.Food')),
+                ('customer', models.ForeignKey(related_name=b'ordersorder', default=0, to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='OrderFoodQuantity',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('quantity', models.IntegerField(default=0)),
+                ('food', models.ForeignKey(related_name=b'order_quantities', to='menu.Food')),
+                ('order', models.ForeignKey(related_name=b'food_quantities', to='menu.Order')),
             ],
             options={
             },
@@ -92,10 +102,20 @@ class Migration(migrations.Migration):
             name='ShoppingCart',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('food_quantity', models.IntegerField(default=0)),
                 ('customer', models.ForeignKey(related_name=b'shopping_carts', to=settings.AUTH_USER_MODEL)),
-                ('foods', models.ManyToManyField(related_name=b'shopping_carts', null=True, to='menu.Food', blank=True)),
                 ('restaurant', models.ForeignKey(related_name=b'shopping_carts', to='menu.Restaurant')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='ShoppingCartFoodQuantity',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('quantity', models.IntegerField(default=0)),
+                ('food', models.ForeignKey(related_name=b'shopping_cart_quantities', to='menu.Food')),
+                ('shopping_cart', models.ForeignKey(related_name=b'food_quantities', to='menu.ShoppingCart')),
             ],
             options={
             },
@@ -125,8 +145,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='food',
-            name='tags',
-            field=models.ManyToManyField(related_name=b'foods', to='menu.Tag'),
+            name='tag',
+            field=models.ForeignKey(related_name=b'foods', to='menu.Tag'),
             preserve_default=True,
         ),
     ]

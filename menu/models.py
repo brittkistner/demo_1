@@ -26,7 +26,7 @@ class Tag(models.Model):
 class Food(models.Model):
     name = models.CharField(max_length=30)
     price = models.FloatField()
-    tags = models.ManyToManyField(Tag, related_name='foods')
+    tag = models.ForeignKey(Tag, related_name='foods')
 
     def __unicode__(self):
         return self.name

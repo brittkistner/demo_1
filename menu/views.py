@@ -87,7 +87,15 @@ def get_menu(request, restaurant_id):
     for food in menu.foods.all():
         form = FoodQuantityForm({'food': food.id, 'quantity': 0})
         foods[food] = form
-    data = {"customer": customer, "foods": foods}
+
+    types = {}
+    for food in menu.foods.all():
+        if food.tag in types:
+            types[food.tag].append(food)
+        else:
+            types[food.tag] = [food]
+
+    data = {"customer": customer, "foods": foods, "types": types}
     if check_shopping_cart_by_restaurant_and_customer(restaurant, customer) == True:
         shopping_cart = get_shopping_cart(restaurant, customer)
         data['shopping_cart'] = shopping_cart
