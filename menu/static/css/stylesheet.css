@@ -47,6 +47,7 @@ overflow:auto;
 padding-bottom:150px;
 }
 
+
 .footer
 {
 position: relative;
@@ -280,10 +281,13 @@ h4{
     padding-top:5%;
 }
 
-#type{
+#type span{
    /*border: 2px solid green;*/
+    margin-right: 20%;
    border-bottom: 2px solid #9bb672;
+   /*float: left;*/
 }
+
 
 /********************/
 /*PROFILE************/
