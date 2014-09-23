@@ -72,15 +72,17 @@ def restaurant_info(request, restaurant_id):
     business=yelp_api.GetBusiness(restaurant.yelp_id)
     deal=business.deals
 
-    location=business.location
-    # reviews=random.choice(business.reviews)
-    reviews = business.reviews[:2]
+    address=business.location.address[0]
+    review1 = random.choice(business.reviews)
+    # review2 = random.choice(business.reviews)
+
 
     data = {'business': business,
             "restaurant":restaurant,
-            "location": location,
+            "address": address,
             "deal":deal,
-            "reviews": reviews,
+            "review1": review1,
+            # "review2": review2,
     }
     return render(request, 'restaurant_info.html', data)
 

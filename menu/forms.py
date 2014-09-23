@@ -33,7 +33,7 @@ class FoodQuantityForm(forms.Form):
 
     helper = FormHelper()
     helper.form_method="POST"
-    helper.add_input(Submit('add', 'Add', css_class='button white'))
+    helper.add_input(Submit('add', '+', css_class='button white'))
     helper.form_class = 'form-horizontal'
     helper.field_class = 'col-sm-6'
     helper.form_show_labels = False

@@ -301,9 +301,71 @@ h4{
 /*Restaurant Info****/
 /********************/
 
-.yelp_test{
-    font-size: 1.8em;
-    font-weight: bold;
-    color: white;
+.yelp-info{
+    background-color:#f8f8f8 ;
+    /*padding:3% 1% 3% 2%;*/
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color:#303e49;
+    height:500px;
 }
 
+.details{
+    background-color:#aaaaaa;
+    padding:3% 1% 3% 2%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color:#494949 ;
+    margin: 3%;
+    font-size: 1.5em;
+}
+
+.deets{
+    width:30%;
+}
+
+.ratings{
+   background-color:#aaaaaa;
+   color:#494949;
+    /*padding:3% 1% 3% 2%;*/
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-top:4%;
+    font-size: 1.5em;
+}
+
+.photo{
+    margin: 3%;
+}
+
+#buttons{
+    color:#f8f8f8;
+    margin: 2%;
+    text-decoration: none;
+}
+
+
+
+.rating-count{
+    /*border: 2px solid red;*/
+    margin: 3%;
+}
+
+.review{
+    /*border: 2px solid green;*/
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.rating-info{
+    /*border: 2px solid purple;*/
+    margin-bottom:2%;
+    margin-right: 6%;
+    margin-left: 7%;
+
+}

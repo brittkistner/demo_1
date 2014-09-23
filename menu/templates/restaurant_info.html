@@ -1,36 +1,73 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container yelp_test">
-<a href="{%  url 'get_menu' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>
-                    <h4 id="post-tag">{{ restaurant.name }}</h4>
 
-
-   NAME   {{ business.name }}<br>
-   DISPLAY PHONE   {{ business.display_phone }}<br>
-    RATING   {{ business.rating }}<br>
-    REVIEW COUNT   {{ business.review_count }}<br>
-    URL   {{ business.url }}<br>
-{{ location.city }} | {{ location.address }} | {{ location.postal_code }}
-    {% if business.is_closed %}
-        Closed
-    {% else %}
-        Open
-    {% endif %}
-
-    {% for review in reviews %}
-        Excerpt: {{ review.excerpt }}
-        Time: {{ review.time_created }}
-        Rating: {{ review.rating }}
-        User: {{ review.user.name }} |  User: {{ review.user.image_url }}
-    {% endfor %}
-
-
-{#     Deals {{ deal.title }} | {{ deal.what_you_get }}#}
-
-
-
-
-
-
+{#<a href="{%  url 'get_menu' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>#}
+{#                    <h4 id="post-tag">{{ restaurant.name }}</h4>#}
+{##}
+{##}
+{#   NAME   {{ business.name }}<br>#}
+{#   DISPLAY PHONE   {{ business.display_phone }}<br>#}
+{#    RATING   {{ business.rating }}<br>#}
+{#    REVIEW COUNT   {{ business.review_count }}<br>#}
+{#    URL   {{ business.url }}<br>#}
+{#{{ location.city }} | {{ location.address }} | {{ location.postal_code }}#}
+{#    {% if business.is_closed %}#}
+{#        Closed#}
+{#    {% else %}#}
+{#        Open#}
+{#    {% endif %}#}
+{##}
+{#    {% for review in reviews %}#}
+{#        Excerpt: {{ review.excerpt }}#}
+{#        Time: {{ review.time_created }}#}
+{#        Rating: {{ review.rating }}#}
+{#        User: {{ review.user.name }} |  User: {{ review.user.image_url }}#}
+{#    {% endfor %}#}
+<div class="container yelp-info">
+    <div class="row">
+        <div class="col-sm-5 deets">
+            <div class="row photo">
+                <a href="{{ business.url }}"><img width="400px" src="{{ restaurant.img.url }}"></a>
+            </div>
+            <div class="row details">
+                <span class="glyphicon glyphicon-earphone">{{ business.display_phone }}</span>
+                <section>
+                    {{ address }},
+                    {{ business.location.city }}
+                </section>
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-2 ratings">
+            <div class="row">
+                <section id="buttons"><button type="button" class="btn btn-default"><a href="{%  url 'get_menu' restaurant.id %}">Menu</a></button></section>
+                <section id="buttons"><button type="button" class="btn btn-default"><a href="#">Availability</a></button></section>
+{#                <button type="button" class="btn btn-default"><a href="{%  url 'get_menu' restaurant.id %}"></a>Menu</button>#}
+            </div>
+            <div class="row">
+                <div class="row rating-count">
+                    <section>Rating {{ business.rating }}</section><section>Review Count {{ business.review_count }}</section>
+                </div>
+                <div class="row">
+                    <div class="row rating-info">
+                        <section class="glyphicon glyphicon-star" style="float:right">Rating: {{ review1.rating }}</section>
+                    </div>
+                    <div class="row review">
+                        <section>{{ review1.excerpt }}</section>
+                        <section style="float:right">-{{ review1.user.name }}</section>
+                    </div>
+                </div>
+{#                <div class="row">#}
+{#                    <div class="row rating-info">#}
+{#                        <section style="float:right">Rating: {{ review2.rating }}</section>#}
+{#                    </div>#}
+{#                    <div class="row review">#}
+{#                        <section>{{ review2.excerpt }}</section>#}
+{#                        <section style="float:right">-{{ review2.user.name }}</section>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
