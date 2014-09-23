@@ -25,7 +25,9 @@ urlpatterns = patterns('',
     url(r'^search/$', 'menu.views.search', name='search'),
     url(r'^search/(?P<coordinates>.*)/$', 'menu.views.search_lat_long', name='search_lat_long'),
     #Restaurant#
-    # url(r'^restaurants/(?P<restaurant_list>\w+)/$', 'menu.views.restaurant_yelp', name='restaurant_yelp'),
+    url(r'^restaurants/(?P<restaurant_list>\w+)/$', 'menu.views.restaurants', name='restaurants'),
+
+    url(r'^restaurant/(?P<restaurant_id>\w+)/$', 'menu.views.restaurant_info', name='restaurant_info'),
     #Menu#
     url(r'^menu/(?P<restaurant_id>\w+)/$', 'menu.views.get_menu', name='get_menu'),
     #Cart#

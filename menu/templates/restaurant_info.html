@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container yelp_test">
+<a href="{%  url 'get_menu' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>
+                    <h4 id="post-tag">{{ restaurant.name }}</h4>
+
+
+   NAME   {{ business.name }}<br>
+   DISPLAY PHONE   {{ business.display_phone }}<br>
+    RATING   {{ business.rating }}<br>
+    REVIEW COUNT   {{ business.review_count }}<br>
+    URL   {{ business.url }}<br>
+{{ location.city }} | {{ location.address }} | {{ location.postal_code }}
+    {% if business.is_closed %}
+        Closed
+    {% else %}
+        Open
+    {% endif %}
+
+    {% for review in reviews %}
+        Excerpt: {{ review.excerpt }}
+        Time: {{ review.time_created }}
+        Rating: {{ review.rating }}
+        User: {{ review.user.name }} |  User: {{ review.user.image_url }}
+    {% endfor %}
+
+
+{#     Deals {{ deal.title }} | {{ deal.what_you_get }}#}
+
+
+
+
+
+
+</div>
+{% endblock %}

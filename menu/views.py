@@ -1,3 +1,4 @@
+import random
 import re
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -66,6 +67,24 @@ def restaurants(request, restaurant_list):
     data = {'restaurants': restaurant_list}
     return render(request, 'restaurants.html', data)
 
+def restaurant_info(request, restaurant_id):
+    restaurant = Restaurant.objects.get(pk=restaurant_id)
+    business=yelp_api.GetBusiness(restaurant.yelp_id)
+    deal=business.deals
+
+    location=business.location
+    # reviews=random.choice(business.reviews)
+    reviews = business.reviews[:2]
+
+    data = {'business': business,
+            "restaurant":restaurant,
+            "location": location,
+            "deal":deal,
+            "reviews": reviews,
+    }
+    return render(request, 'restaurant_info.html', data)
+
+
 def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
     if not shopping_cart_list:
@@ -79,12 +98,7 @@ def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
 
 def get_shopping_cart(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
-    return customer.shopping_carts.filter(pk__in=shopping_cart_list)[0]  #polish up
-
-def restaurant_yelp(request, restaurant_id):
-    restaurant = Restaurant.objects.get(restaurant_id)
-    business=yelp_id.GetBusiness(restaurant.yelp_id)
-
+    return customer.shopping_carts.filter(pk__in=shopping_cart_list)[0]
 
 #RESTAURANT MENU #
 @login_required()
@@ -150,7 +164,6 @@ def checkout(request,cart_id):
     data={
         'order':order,
         'restaurant':restaurant,
-        'customer':customer,
     }
     return render(request, 'checkout.html', data)
 
@@ -160,10 +173,3 @@ def purchase_complete(request):
     customer = request.user
     data = {"customer": customer}
     return render(request, 'confirm_purchase.html', data)
-
-# import yelp
-#
-# yelp_api = yelp.Api(consumer_key=z4wowXpPjMIOQ7YboOBy6g,
-#                     consumer_secret=MZUvylqq0OVkhJXaZOwwoyQBTFM,
-#                     access_token_key=Ca9XgVmPC14COPKKzMvrTZi-3xr8C7Fr,
-#                     access_token_secret=1N1asF0HVFK3Cf9m0E4rww7ch58)

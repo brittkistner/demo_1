@@ -13,7 +13,7 @@ class Restaurant(models.Model):
     lat = models.FloatField(null=True)
     longi = models.FloatField(null=True)
     img = models.ImageField(upload_to='restaurant_images', blank=True, null=True)
-    # yelp_id = models.CharField(max_length=60)
+    yelp_id = models.CharField(max_length=60,null=True)
 
     def __unicode__(self):
         return self.name
@@ -35,12 +35,17 @@ class Food(models.Model):
 
 class Order(models.Model):
     creation_time = models.DateTimeField(auto_now_add=True)
-    customer = models.ForeignKey(Customer, related_name='ordersorder',default=0)
+    customer = models.ForeignKey(Customer, related_name='orders',default=0)
     status = models.BooleanField(default=True)
     restaurant = models.ForeignKey(Restaurant, related_name='orders', default=0)
-    #Use NullBooleanField()??
-    # food_quantity = models.IntegerField(default=0)
-    # foods = models.ManyToManyField(Food, related_name='orders')
+
+    def total(self):
+        food_quantities = self.food_quantities.all()
+        total = 0
+        for food_quantity in food_quantities:
+            total += food_quantity.food.price * food_quantity.quantity
+
+        return total
 
 class OrderFoodQuantity(models.Model):
     food = models.ForeignKey(Food, related_name='order_quantities')
@@ -77,5 +82,3 @@ class ShoppingCartFoodQuantity(models.Model):
     def __unicode__(self):
         return u"{}".format(self.food)
 
-
-#CREATE ANOTHER APP FOR STAFF(could possible be a regular user)

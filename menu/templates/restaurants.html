@@ -4,10 +4,10 @@
 	<!-- Content -->
 	<div class="container">
 		<div id="posts" data-columns >
-            {% for restaurant in restaurants %}#}
+            {% for restaurant in restaurants %}
                 <div class="post">
-                    <a href="{%  url 'get_menu' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>
-{#                    <p>{{ restaurant.name }}</p>#}
+{#                    <a href="{%  url 'get_menu' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>#}
+                    <a href="{%  url 'restaurant_info' restaurant.id %}"><img width="100px" src="{{ restaurant.img.url }}"></a>
                     <h4 id="post-tag">{{ restaurant.name }}</h4>
                 </div>
             {% endfor %}
