@@ -4,50 +4,36 @@
 
 {% block content %}
 {# FoodQuantityForm/foods hash #}
-<div class="container">
+<div class="container-fluid menu_restaurant">
     <div class="row">
-        <div class="col-sm-6 test">
-            <div class="row">
+        <div class="col-sm-5 test">
+            <div class="row menu">
                 {% for food_type, food_ls in types.items %}
-                    <p>Type: {{ food_type }}</p>
+{#                    <h5>{{ food_type }}</h5>#}
+                    <p id="type">{{ food_type }}</p>
                     {% for food, form in foods.items %}
                         {% if food.tag == food_type %}
-                            <div class="col-sm-7 test2">
-                                {{ food.name }}
-                            </div>
-                            <div class="col-sm-5 test3">
-                                <form method="POST" action=".">
-                                    {% csrf_token %}
-                                    {% crispy form %}
-                                </form>
+                            <div id="item">
+                                <div class="col-sm-7 test2">
+                                    {{ food.name }}
+                                </div>
+                                <div class="col-sm-5 test3">
+                                    <form method="POST" action=".">
+                                        {% csrf_token %}
+                                        {% crispy form %}
+                                    </form>
+                                </div>
                             </div>
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
-{#            {% for food, form in foods.items %}#}
-{#                <div class="col-sm-7 test2">#}
-{#                    {{ food.name }}#}
-{#                </div>#}
-{#                <div class="col-sm-5 test3">#}
-{#                    <form method="POST" action=".">#}
-{#                        {% csrf_token %}#}
-{#                    {{ form.as_p }}#}
-{#                        {% crispy form %}#}
-{#                    <input type="submit"/>#}
-{#                    </form>#}
-{#                </div>#}
-{#            {% endfor %}#}
             </div>
         </div>
-
-
 {# Shopping Cart Form #}
-        <div class="col-sm-6 table">
-            <div class="row">
-                Summary
-            </div>
+        <div class="col-sm-4 col-sm-offset-2 cart">
             <div class="row">
                 <table class="table table-condensed table-responsive">
+                    <p>Summary</p>
                     <tr>
                         <th>Item</th>
                         <th>Qty</th>
@@ -60,23 +46,15 @@
                         <td>{{ food_quantity.food.price}}</td>
                     </tr>
                     {% endfor %}
-        {#            <tr>#}
-        {#                <td>#}
-                            {#    {% for food_quantity in shopping_cart.food_quantities.all %}#}
-                            {#        {{ quantity = food_quantity.quantity  }}#}
-                            {#        {{  price = food_quantity.price  }}#}
-                            {#        {% sub = quantity * price%}#}
-                            {#    {% endfor %}#}
-        {#                </td>#}
-        {#            </tr>#}
-        {#            <tr>#}
-                  </table>
-            {#Checkout Button#}
-{#                {% if shopping_cart%}#}
-{#                    Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
-{#                {% else %}#}
-{#                        Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
-{#                {% endif %}#}
+                </table>
+            </div>
+            <div class="row">
+{#            Checkout Button#}
+                {% if shopping_cart%}
+                    <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>
+                    {% else %}
+{#                            Checkout: <a class="btn btn-default" href="{% url 'checkout' shopping_cart.id %}">Checkout</a>#}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -84,3 +62,15 @@
 {% endblock %}
 
 
+{#SUBTOTAL#}
+
+        {#            <tr>#}
+{#                        <td>#}
+{#                                {% for food_quantity in shopping_cart.food_quantities.all %}#}
+{#                                    {{ quantity = food_quantity.quantity  }}#}
+{#                                    {{  price = food_quantity.price  }}#}
+{#                                    {% sub = quantity * price%}#}
+{#                                {% endfor %}#}
+{#                        </td>#}
+        {#            </tr>#}
+        {#            <tr>#}

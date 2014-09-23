@@ -4,18 +4,26 @@
 {#   restaurants tried#}
 {#payment information#}
 {#     <p>Payment Information: {{ customer.}}</p>#}
-
-{#member since#}
-     <p>Member Since: {{ customer.date_joined }}</p>
-{#password settings#}
-{#    <p>Password: {{ customer.password }}</p>#}
-{#first name#}
-     <p>First Name: {{ customer.first_name }}</p>
-{#last_name#}
-     <p>Last Name: {{ customer.last_name }}</p>
-{#email#}
-     <p>Email Address: {{ customer.email }}</p>
-{#edit profile#}
-    <a class="btn btn-default" href="#">Edit Profile</a>
-
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 profile">
+        {#email#}
+             <p>Email Address: {{ customer.email }}</p>
+         {#first name#}
+             <p>First Name: {{ customer.first_name }}</p>
+        {#last_name#}
+             <p>Last Name: {{ customer.last_name }}</p>
+        {#member since#}
+             <p>Member Since: {{ customer.date_joined }}</p>
+        {#password settings#}
+        {#    <p>Password: {{ customer.password }}</p>#}
+        {#edit profile#}
+            <a class="btn btn-default" href="#">Edit Profile</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

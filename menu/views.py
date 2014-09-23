@@ -7,6 +7,13 @@ from demo1 import settings
 from menu.forms import EmailUserCreationForm, FoodQuantityForm
 from menu.models import Menu, Food, ShoppingCart, Restaurant, Order, ShoppingCartFoodQuantity, OrderFoodQuantity
 
+import yelp
+
+
+yelp_api = yelp.Api(consumer_key="z4wowXpPjMIOQ7YboOBy6g",
+                    consumer_secret="MZUvylqq0OVkhJXaZOwwoyQBTFM",
+                    access_token_key="Ca9XgVmPC14COPKKzMvrTZi-3xr8C7Fr",
+                    access_token_secret="1N1asF0HVFK3Cf9m0E4rww7ch58")
 
 def register(request):
     if request.method == 'POST':
@@ -61,6 +68,10 @@ def restaurants(request, restaurant_list):
     #     restaurants.append(Restaurant.objects.get(pk=restaurant_id))
     data = {'restaurants': restaurant_list}
     return render(request, 'restaurants.html', data)
+
+def yelp_restaurant(request, restaurant_id):
+    restaurant = Restaurant.objects.get(restaurant_id).name
+    business=yelp_api.GetBusiness()
 
 def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
@@ -127,11 +138,10 @@ def get_menu(request, restaurant_id):
 def checkout(request,cart_id):
     cart = ShoppingCart.objects.get(pk=cart_id)
     food_quantities = cart.food_quantities.all()
-    restaurant = Restaurant.objects.get(shopping_carts__pk=cart_id)
+    restaurant = Restaurant.objects.get(pk_in_shopping_carts=cart_id)
     customer = request.user
     order = Order(customer=customer,restaurant=restaurant)
     order.save()
-    # copy scfq to ofq
     for food_quantity in food_quantities:
         # food_id = food_quantity.food.id
         food = food_quantity.food
@@ -155,3 +165,9 @@ def purchase_complete(request):
     data = {"customer": customer}
     return render(request, 'confirm_purchase.html', data)
 
+# import yelp
+#
+# yelp_api = yelp.Api(consumer_key=z4wowXpPjMIOQ7YboOBy6g,
+#                     consumer_secret=MZUvylqq0OVkhJXaZOwwoyQBTFM,
+#                     access_token_key=Ca9XgVmPC14COPKKzMvrTZi-3xr8C7Fr,
+#                     access_token_secret=1N1asF0HVFK3Cf9m0E4rww7ch58)

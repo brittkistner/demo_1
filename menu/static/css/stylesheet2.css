@@ -46,7 +46,7 @@ html,body,.container
     height: 800px;
     font-color: black;
 }
-}
+
 
 .footer, .push
 {
@@ -85,17 +85,18 @@ Login popup box
 }
 
 #modal_trigger  {
-    margin: 100px auto;
+    margin-top: 23%;
+    margin-left: 40%;
      width: 100px;
      display: block;
 }
 
 .btn  {
-    padding: 10px 20px;
+    padding: 10px 125px 10px 10px;
      background:  #F4F4F2;
 }
 
- Popup Styles
+ /*Popup Styles*/
 .popupHeader  {
     font-size: 16px;
      text-transform:  uppercase;
@@ -122,13 +123,23 @@ Login popup box
 
 .popupBody  {
     padding: 20px;
-
+    background-color: white;
 }
 
+/*.popupBody form{*/
+    /*border: 2px solid green;*/
 
-******************
-Login Page Styling
-******************
+/*}*/
+.popupBody .btn{
+    padding-right: 5%;
+    margin-top: 3%;
+    margin-left: 17%;
+    margin-bottom: 5%;
+}
+
+/********************/
+/*Login Page Styling*/
+/********************/
 
 .words{
     display: table-cell;

@@ -5,27 +5,53 @@
 html,body
 {
 height:100%;
-/*padding-top: 70px;*/
 }
 
+#logo{
+    width: 0 auto;
+    height: 50px;
+    display:inline-block;
+    float: left;
+}
+
+h1{
+    color:#303e49 !important;
+    display:inline-block;
+    height: 50px;
+    float: left;
+    padding: 0;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.nav li a{
+  color:#303e49 !important;
+
+}
 #wrap
 {
 padding-top: 70px;
 min-height: 100%;
-/*background-color: green;*/
+background-image:url('../img/people.jpg');
+/*background-repeat: no-repeat;*/
+background-position: center;
+background-size: cover;
+width: 100%;
+    /*height: 100%;*/
+    height: 700px;
 }
 
 #main
 {
 overflow:auto;
-padding-bottom:150px; /* this needs to be bigger than footer height*/
+padding-bottom:150px;
 }
 
 .footer
 {
 position: relative;
-margin-top: -100px; /* negative value of footer height */
-height: 100px;
+margin-top: -10px;
+height: 10px;
 clear:both;
 padding-top:20px;
 border-top: 2px solid black;
@@ -34,97 +60,85 @@ background-color: white !important;
 }
 
 
-.test{
-    border: 2px solid green;
-}
 
-.test2{
-    background-color: pink;
-}
-
-.test3{
-    background-color: orange;
-}
 /*****************/
 /*Login popup box*/
 /*****************/
 
-/*#lean_overlay {*/
-    /*position: fixed;*/
-    /*z-index:100;*/
-    /*top: 0px;*/
-    /*left: 0px;*/
-    /*height:100%;*/
-    /*width:100%;*/
-    /*background: #000;*/
-    /*display: none;*/
-/*}*/
+#modal_trigger  {
+    /*martin-top: 50%;*/
+    /*margin-top: 23%;*/
+    /*margin-left: 40%;*/
+     /*width: 100px;*/
+     /*display: block;*/
+}
 
-/* Modal box or Popup box */
-/*.popupContainer{*/
-    /*position:absolute;*/
-    /*width:330px;*/
-    /*height: auto;*/
-    /*left:45%;*/
-    /*top:80px;*/
-    /*background: #FFF;*/
-/*}*/
+.hero .btn  {
+    margin-top: 50%;
+    background:  #F4F4F2;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+ /*Modal box or Popup box */
+.popupContainer{
+    position:absolute;
+    width:330px;
+    height: auto;
+    left:45%;
+    top:80px;
+    background: #FFF;
+}
 
 
-/* Popup Styles*/
-/*.popupHeader  {*/
-    /*font-size: 16px;*/
-     /*text-transform:  uppercase;*/
-/*}*/
+ /*Popup Styles*/
+.popupHeader  {
+    font-size: 16px;
+     text-transform:  uppercase;
+}
 
-/*.popupHeader  {*/
-    /*background: #F4F4F2;*/
-     /*position: relative;*/
-     /*padding: 10px 20px;*/
-     /*border-bottom: 1px solid #DDD;*/
-     /*font-weight: bold;*/
-/*}*/
+.popupHeader  {
+    background: #F4F4F2;
+     position: relative;
+     padding: 10px 20px;
+     border-bottom: 1px solid #DDD;
+     font-weight: bold;
+}
 
-/*.popupHeader .modal_close  {*/
-    /*position:  absolute;*/
-     /*right:  0;*/
-     /*top: 0;*/
-     /*padding: 10px 15px;*/
-     /*background: #E4E4E2;*/
-     /*cursor:  pointer;*/
-     /*color: #aaa;*/
-     /*font-size: 16px;*/
-/*}*/
+.popupHeader .modal_close  {
+    position:  absolute;
+     right:  0;
+     top: 0;
+     padding: 10px 15px;
+     background: #E4E4E2;
+     cursor:  pointer;
+     color: #aaa;
+     font-size: 16px;
+}
 
-/*.popupBody  {*/
-    /*padding: 20px;*/
-/*}*/
+.popupBody  {
+    padding: 20px;
+}
+
+.popupBody .btn{
+    padding-right: 5%;
+    margin-top: 3%;
+    margin-left: 17%;
+    margin-bottom: 5%;
+}
 
 /********************/
 /*Login Page Styling*/
 /********************/
-
-/*.hero{*/
-    /*border: 2px solid black;*/
-/*}*/
-
-/*.login{*/
-    /*padding: 20% 0 20% 0;*/
-/*}*/
-
-/*.wrapper{*/
-    /*width: 100%;*/
-    /*border: 2px solid green;*/
-/*}*/
-
-/*img{*/
-    /*background-image: url('../img/background.jpg')*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center;*/
-    /*background-size: cover;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-/*}*/
 
 /********************/
 /*SALVATORRE*/
@@ -200,6 +214,67 @@ h4{
 /********************/
 /*SHOPPING CART TABLE*/
 /********************/
-/*.table{*/
-    /*border: 2px solid green;*/
-/*}*/
+
+.cart{
+    background-color:#f8f8f8 ;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    padding-right: 3%;
+    padding-top: 3%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.cart p{
+    font-size: 1.2em;
+    padding-left: 1%;
+    font-weight: bolder;
+}
+
+/********************/
+/*MENU*/
+/********************/
+
+.menu_restaurant{
+    color: black;
+    /*padding: 2%;*/
+}
+.menu p{
+    font-size: 1.3em;
+}
+
+.menu{
+    margin-left: 10%;
+    background-color:#f8f8f8 ;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.menu .test2{
+    padding-top:5%;
+}
+
+#type{
+   /*border: 2px solid green;*/
+   border-bottom: 2px solid #9bb672;
+}
+
+/********************/
+/*PROFILE************/
+/********************/
+
+.profile{
+    /*margin-left: 10%;*/
+    background-color:#f8f8f8 ;
+    padding:3% 1% 3% 2%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    font-size: 1.3em;
+    /*text-align: center;*/
+}
