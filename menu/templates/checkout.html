@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row checkout">
-
-        <h2>{{ customer.name }} your order is confirmed.</h2>
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4 checkout">
+        {{ order }}
+        <h2>Thank You.</h2>
+        <h2>Your order is confirmed.</h2>
     </div>
-{#    Please leave a rating here:#}
-{#   <a class="btn btn-default" href="#">Purchase</a>#}
+</div>
 {% endblock %}

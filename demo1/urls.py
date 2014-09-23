@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^$', 'django.contrib.auth.views.login', name='login'),
     url(r'^register/$', 'menu.views.register', name='register'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     # PASSWORD RESET
     url(r'^password_reset/$', 'django.contrib.auth.views.password_reset', name='password_reset'),
     url(r'^password_reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^search/$', 'menu.views.search', name='search'),
     url(r'^search/(?P<coordinates>.*)/$', 'menu.views.search_lat_long', name='search_lat_long'),
     #Restaurant#
-    # url(r'^restaurants/(?P<restaurant_list>\w+)/$', 'menu.views.restaurants', name='restaurants'),  #WILL BRING IN MULTIPLE RESTAURANT IDs
+    # url(r'^restaurants/(?P<restaurant_list>\w+)/$', 'menu.views.restaurant_yelp', name='restaurant_yelp'),
     #Menu#
     url(r'^menu/(?P<restaurant_id>\w+)/$', 'menu.views.get_menu', name='get_menu'),
     #Cart#

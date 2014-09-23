@@ -13,6 +13,7 @@ class Restaurant(models.Model):
     lat = models.FloatField(null=True)
     longi = models.FloatField(null=True)
     img = models.ImageField(upload_to='restaurant_images', blank=True, null=True)
+    # yelp_id = models.CharField(max_length=60)
 
     def __unicode__(self):
         return self.name
@@ -60,6 +61,13 @@ class ShoppingCart(models.Model):
     customer = models.ForeignKey(Customer, related_name='shopping_carts')
     restaurant = models.ForeignKey(Restaurant, related_name='shopping_carts')
 
+    def total(self):
+        food_quantities = self.food_quantities.all()
+        subtotal = 0
+        for food_quantity in food_quantities:
+            subtotal += food_quantity.food.price * food_quantity.quantity
+
+        return subtotal
 
 class ShoppingCartFoodQuantity(models.Model):
     food = models.ForeignKey(Food, related_name='shopping_cart_quantities')

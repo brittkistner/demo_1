@@ -48,6 +48,8 @@
                     {% endfor %}
                 </table>
             </div>
+        {#SUBTOTAL#}
+        {{shopping_cart.total}}
             <div class="row">
 {#            Checkout Button#}
                 {% if shopping_cart%}
@@ -62,15 +64,5 @@
 {% endblock %}
 
 
-{#SUBTOTAL#}
 
-        {#            <tr>#}
-{#                        <td>#}
-{#                                {% for food_quantity in shopping_cart.food_quantities.all %}#}
-{#                                    {{ quantity = food_quantity.quantity  }}#}
-{#                                    {{  price = food_quantity.price  }}#}
-{#                                    {% sub = quantity * price%}#}
-{#                                {% endfor %}#}
-{#                        </td>#}
-        {#            </tr>#}
-        {#            <tr>#}
+

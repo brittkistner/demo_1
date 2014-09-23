@@ -63,15 +63,8 @@ def search_lat_long(request, coordinates):
 #RESTAURANT PICK #
 @login_required()
 def restaurants(request, restaurant_list):
-    # restaurants = []  #are you passing in restaurant objects??  If so, then just pass directly to data
-    # for restaurant_id in restaurant_id_list:
-    #     restaurants.append(Restaurant.objects.get(pk=restaurant_id))
     data = {'restaurants': restaurant_list}
     return render(request, 'restaurants.html', data)
-
-def yelp_restaurant(request, restaurant_id):
-    restaurant = Restaurant.objects.get(restaurant_id).name
-    business=yelp_api.GetBusiness()
 
 def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
@@ -87,6 +80,11 @@ def check_shopping_cart_by_restaurant_and_customer(restaurant, customer):
 def get_shopping_cart(restaurant, customer):
     shopping_cart_list = restaurant.shopping_carts.values('id')
     return customer.shopping_carts.filter(pk__in=shopping_cart_list)[0]  #polish up
+
+def restaurant_yelp(request, restaurant_id):
+    restaurant = Restaurant.objects.get(restaurant_id)
+    business=yelp_id.GetBusiness(restaurant.yelp_id)
+
 
 #RESTAURANT MENU #
 @login_required()
@@ -131,14 +129,12 @@ def get_menu(request, restaurant_id):
 
     return render(request, 'restaurant_menu.html', data)
 
-# Subtotal idea: shopping_cart.food_quantites.all().aggregate(total=Sum('food.price',field="food.price*quantity"))['total']
-
 #Checkout#
 @login_required()
 def checkout(request,cart_id):
     cart = ShoppingCart.objects.get(pk=cart_id)
     food_quantities = cart.food_quantities.all()
-    restaurant = Restaurant.objects.get(pk_in_shopping_carts=cart_id)
+    restaurant = cart.restaurant
     customer = request.user
     order = Order(customer=customer,restaurant=restaurant)
     order.save()
