@@ -2,12 +2,8 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-4 col-sm-offset-4 checkout">
-        Customer: {{ order.customer.name }}
-        Total: {{ order.total }}
-        Restaurant: {{ restaurant.name }}
-        Creation Time: {{ order.creation_time }}
-        <h2>Thank You.</h2>
-        <h2>Your order is confirmed.</h2>
+        <h2>Thank You {{ customer.name }}.</h2>
+        <h2>Your order for ${{ order.total }} is confirmed at {{ restaurant.name }} on {{ order.creation_time }}.</h2>
     </div>
 </div>
 {% endblock %}

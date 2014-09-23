@@ -47,9 +47,9 @@
                     </tr>
                     {% endfor %}
                 </table>
+                <p>Subtotal: ${{shopping_cart.total}}</p>
             </div>
-        {#SUBTOTAL#}
-        {{shopping_cart.total}}
+
             <div class="row">
 {#            Checkout Button#}
                 {% if shopping_cart%}
